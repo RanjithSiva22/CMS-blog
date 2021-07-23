@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { LocalStorageService } from "../localstorage.service";
 
@@ -7,11 +7,15 @@ import { LocalStorageService } from "../localstorage.service";
   templateUrl: './add-blog.component.html',
   styleUrls: ['./add-blog.component.css']
 })
-export class AddBlogComponent implements OnInit {
-  category = [{ name: "uncategory", value: false }];
-  blog_details =JSON.parse(this.localStorageService.getItem(`blogs`));
 
-  addCategory(newcat) {
+export class AddBlogComponent {
+
+  public category = [{ name: "uncategory", value: false }];
+
+  public blog_details =JSON.parse(this.localStorageService.getItem(`blogs`));
+
+  public addCategory(newcat) {
+    
     // alert(newcat.category);
     this.category.push({ name: newcat.category, value: false });
     this.localStorageService.setItem(
@@ -20,7 +24,7 @@ export class AddBlogComponent implements OnInit {
     );
   }
 
-  change(a) {
+  public change(a) {
 
     if (this.category[a].value == false)
       this.category[a].value = true;
@@ -31,7 +35,7 @@ export class AddBlogComponent implements OnInit {
   }
 
 
-  saveblog(blog) {
+  public saveblog(blog) {
     let arr = [];
 
     let date = new Date();
@@ -52,10 +56,12 @@ export class AddBlogComponent implements OnInit {
 
   constructor(private localStorageService: LocalStorageService) { }
 
-  ngOnInit() {
-    this.category=JSON.parse(this.localStorageService.getItem(
-      `category`
-    ));
+  public ngOnInit() {
+
+    let existingCategory = this.localStorageService.getItem(`category`) ?
+      this.localStorageService.getItem(`category`) : [];
+
+    this.category = JSON.parse(`${existingCategory}`);
   }
 
 }
