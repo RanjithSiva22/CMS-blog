@@ -1,0 +1,59 @@
+
+<div>
+<form #filter="ngForm" (ngSubmit)="blogFilter(filter.value)"> 
+  <label  class="ms-1" for="blogs">All</label>
+    <select name="blogs" id="blogs" ngModel>
+        <option value="all blogs" selected>All bogs</option>
+        
+      </select>
+      <label class="ms-1" for="Dates">Dates</label>
+      <select  name="Dates" id="Dates" ngModel>
+        <option value="13-Apr-2021">13-Apr-2021</option>
+      </select>
+      <label class="ms-1" for="category">category</label>
+
+      <select  name="category" id="category" ngModel>
+        <option *ngFor="let caty of category" value="{{caty.name}}">{{caty.name}}</option>
+      </select>
+
+      <label class="ms-1" for="SEOScore">all seo source</label>
+
+      <select class="" name="SEOScore" id="SEOScore" ngModel>
+        <option value="Ranked SEO">Ranked SEO</option>
+        
+      </select>
+      <button type="submit " class="bg-danger ms-2">filter</button>
+</form>
+
+      
+
+      
+      
+</div>
+<div class="container mt-5">
+    <table class="table">
+        <thead class="bg-dark" style="color:white">
+          <tr>
+            <th scope="col"><input type="text" placeholder="search blog" style="background-color: black;"></th>
+            <th scope="col">Blog Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">Date</th>
+            <th scope="col">View|Edit</th>
+            <th scope="col">Published</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let blog of allblogs;let i=index;">
+            <th scope="row">
+                <input type="checkbox" checked>
+            </th>
+            <td>{{blog.title}}</td>
+            <td>John Depp</td>
+            <td>Published Date<br>{{blog.posteddate}}</td>
+            <td><button type="button" class="bg-dark" style="color:white" (click)="viewblog(i)"> View</button> | <button type="button" class="bg-dark" style="color:white"> Edit</button></td>
+            <td>published</td>
+          </tr>
+          
+        </tbody>
+      </table>
+</div>

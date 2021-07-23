@@ -1,0 +1,66 @@
+<!-- <p>add-blog works!</p> -->
+<div class="container-fluid ">
+  <div class="row">
+    <div class="col-9 " >
+      <form #blog="ngForm" (ngSubmit)="saveblog(blog.value)"> 
+        <input type="text" name="title" placeholder="your title here" ngModel><br><br>
+        <textarea name="detail" cols="50" rows="10" placeholder="start typing or writing" ngModel></textarea><br>
+        <div class="mt-4">
+          use* <input type="submit" class="bg-dark" style="color:blanchedalmond" value="save & draft">
+          <input type="submit" class="bg-dark ms-4" style="color:blanchedalmond" value="post & update">
+        </div>
+      </form>
+    </div>
+    <div class="col">
+      <div>
+        <h6>John Deep<br>
+        Bog Writer and Editor</h6>
+      </div>
+      <div>
+        <div style="border:3px solid rgb(110, 108, 108);padding:5px 5px">
+          <table>
+            <thead>
+              <tr class="align-middle">
+                <th colspan="2" style="text-align: center;"><h5>Actions</h5></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td> Status Draft </td>
+                <td><button type="button" class="btn btn-dark ms-5">Edit</button></td>
+              </tr>
+              <tr>
+                <td>Visibility </td>
+                <td><button type="button" class="btn btn-dark ms-5">Edit</button></td>
+              </tr>
+              <tr>
+                <td> Readbility </td>
+                <td><button type="button" class="btn btn-dark ms-5">Edit</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+  
+        <div class="mt-5" style="border:3px solid rgb(110, 108, 108);padding:5px 5px">
+          <h5>Categories</h5>
+          <div *ngIf="category">
+            <div *ngFor="let caty of category;let i=index">
+              <!-- <h1>{{caty.name}}</h1> -->
+              <input type="checkbox" id="{{i}}" name="{{caty.name}}" value="{{caty.name}}" (change)="change(i)">
+              
+              <label for="{{i}}" class="ms-3"> {{caty.name}}</label><br>
+            </div>
+          </div>
+          <form #addcat="ngForm" (ngSubmit) ="addCategory(addcat.value)"> 
+            <input type="text" name="category" placeholder="new category" ngModel>
+            <input type = "submit" value = "+">
+            <!-- <button type="button" class="btn btn-dark ms-1">+</button> -->
+          </form>
+  
+  
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

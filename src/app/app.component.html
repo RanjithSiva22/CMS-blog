@@ -1,0 +1,28 @@
+
+
+<div class="container-fluid">
+  <div class="row" >
+    <div class="col-2  position-fixed" id="sticky-sidebar" style="height:70%;border:3px solid rgb(110, 108, 108);padding:5px 5px">
+      <h2>DASHBOARD</h2><br>
+      <h5 (click)="pagechange(0)" [style.background-color]="add ? 'blue' : ''">Add new Blog</h5>
+      <hr>
+      <h5 (click)="pagechange(1)" >View all Blog</h5>
+      <hr>
+    </div>
+    <div class="col offset-3 " id="main" style="height:70%;border:3px solid rgb(110, 108, 108);padding:5px 5px">
+      <div *ngIf="add==true; else view">
+        <h2>Add new Blog</h2>
+        
+        <app-add-blog></app-add-blog>
+
+      </div>
+      <ng-template #view>
+        <h2>All blog</h2>
+        <app-view-blog></app-view-blog>
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+
+<!-- <router-outlet></router-outlet> -->
