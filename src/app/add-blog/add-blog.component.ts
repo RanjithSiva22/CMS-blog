@@ -10,7 +10,7 @@ import { LocalStorageService } from "../localstorage.service";
 
 export class AddBlogComponent {
 
-  public category = [{ name: "uncategory", value: false }];
+  public category = [];
 
   exisingPost = this.localStorageService.getItem(`blogs`) ? this.localStorageService.getItem(`blogs`) : `[]`;
 
@@ -24,6 +24,10 @@ export class AddBlogComponent {
       `category`,
       JSON.stringify(this.category)
     );
+
+    alert(`Created new category successful!`)
+
+
   }
 
   public change(a) {
@@ -54,6 +58,8 @@ export class AddBlogComponent {
       JSON.stringify(this.blog_details)
     );
 
+    alert(`Saved new blog!`)
+
   }
 
   constructor(private localStorageService: LocalStorageService) { }
@@ -61,7 +67,7 @@ export class AddBlogComponent {
   public ngOnInit() {
 
     let existingCategory = this.localStorageService.getItem(`category`) ?
-      this.localStorageService.getItem(`category`) : [];
+      this.localStorageService.getItem(`category`) : `[{ name: "uncategory", value: false }]`;
 
     this.category = JSON.parse(`${existingCategory}`);
   }
