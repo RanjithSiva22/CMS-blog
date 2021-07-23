@@ -12,7 +12,7 @@ export class AddBlogComponent {
 
   public category = [{ name: "uncategory", value: false }];
 
-  exisingPost = this.localStorageService.getItem(`blogs`) ? this.localStorageService.getItem(`blogs`) : [];
+  exisingPost = this.localStorageService.getItem(`blogs`) ? this.localStorageService.getItem(`blogs`) : `[]`;
 
   public blog_details = JSON.parse(`${this.exisingPost}`);
 
